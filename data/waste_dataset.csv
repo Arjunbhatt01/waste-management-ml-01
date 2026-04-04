@@ -1,0 +1,201 @@
+id,area,waste_type,weight_kg,moisture_pct,recyclable,material_type,day_of_week,month,volume_liters
+1,Rajpur Road,Plastic,2.3,12,1,synthetic_polymer,Monday,1,8.5
+2,Rajpur Road,Organic,5.8,78,0,biodegradable,Monday,1,14.2
+3,Rajpur Road,Metal,3.1,5,1,ferrous,Monday,1,6.8
+4,Rajpur Road,Paper,1.9,20,1,cellulose,Monday,1,7.3
+5,Rajpur Road,Glass,4.2,2,1,silica,Monday,1,5.1
+6,ISBT,Plastic,3.5,15,1,synthetic_polymer,Monday,1,12.4
+7,ISBT,Organic,8.9,82,0,biodegradable,Monday,1,22.1
+8,ISBT,Metal,2.7,6,1,ferrous,Monday,1,5.9
+9,ISBT,Paper,2.8,25,1,cellulose,Monday,1,10.5
+10,ISBT,Glass,3.3,3,1,silica,Monday,1,4.0
+11,Clement Town,Plastic,1.8,11,1,synthetic_polymer,Monday,1,6.6
+12,Clement Town,Organic,4.2,75,0,biodegradable,Monday,1,10.4
+13,Clement Town,Metal,1.5,4,1,ferrous,Monday,1,3.3
+14,Clement Town,Paper,1.2,18,1,cellulose,Monday,1,4.6
+15,Clement Town,Glass,2.8,2,1,silica,Monday,1,3.4
+16,Prem Nagar,Plastic,2.1,13,1,synthetic_polymer,Monday,1,7.7
+17,Prem Nagar,Organic,6.5,80,0,biodegradable,Monday,1,16.1
+18,Prem Nagar,Metal,2.0,5,1,ferrous,Monday,1,4.4
+19,Prem Nagar,Paper,1.6,22,1,cellulose,Monday,1,6.2
+20,Prem Nagar,Glass,3.0,2,1,silica,Monday,1,3.6
+21,Clock Tower,Plastic,4.1,18,1,synthetic_polymer,Monday,1,15.0
+22,Clock Tower,Organic,10.2,85,0,biodegradable,Monday,1,25.3
+23,Clock Tower,Metal,3.8,7,1,ferrous,Monday,1,8.3
+24,Clock Tower,Paper,3.4,28,1,cellulose,Monday,1,13.1
+25,Clock Tower,Glass,5.1,3,1,silica,Monday,1,6.2
+26,Rajpur Road,Plastic,2.5,14,1,synthetic_polymer,Tuesday,1,9.2
+27,Rajpur Road,Organic,6.0,79,0,biodegradable,Tuesday,1,14.9
+28,Rajpur Road,Metal,2.9,5,1,ferrous,Tuesday,1,6.4
+29,Rajpur Road,Paper,2.1,21,1,cellulose,Tuesday,1,8.1
+30,Rajpur Road,Glass,4.0,2,1,silica,Tuesday,1,4.9
+31,ISBT,Plastic,3.8,16,1,synthetic_polymer,Tuesday,1,13.5
+32,ISBT,Organic,9.2,83,0,biodegradable,Tuesday,1,22.9
+33,ISBT,Metal,2.5,6,1,ferrous,Tuesday,1,5.5
+34,ISBT,Paper,3.0,26,1,cellulose,Tuesday,1,11.5
+35,ISBT,Glass,3.5,3,1,silica,Tuesday,1,4.2
+36,Clement Town,Plastic,1.9,12,1,synthetic_polymer,Tuesday,1,7.0
+37,Clement Town,Organic,4.5,76,0,biodegradable,Tuesday,1,11.2
+38,Clement Town,Metal,1.6,4,1,ferrous,Tuesday,1,3.5
+39,Clement Town,Paper,1.3,19,1,cellulose,Tuesday,1,5.0
+40,Clement Town,Glass,2.9,2,1,silica,Tuesday,1,3.5
+41,Prem Nagar,Plastic,2.3,14,1,synthetic_polymer,Tuesday,1,8.4
+42,Prem Nagar,Organic,6.8,81,0,biodegradable,Tuesday,1,16.9
+43,Prem Nagar,Metal,2.2,5,1,ferrous,Tuesday,1,4.8
+44,Prem Nagar,Paper,1.8,23,1,cellulose,Tuesday,1,6.9
+45,Prem Nagar,Glass,3.2,2,1,silica,Tuesday,1,3.9
+46,Clock Tower,Plastic,4.5,19,1,synthetic_polymer,Tuesday,1,16.5
+47,Clock Tower,Organic,10.8,86,0,biodegradable,Tuesday,1,26.8
+48,Clock Tower,Metal,4.0,7,1,ferrous,Tuesday,1,8.8
+49,Clock Tower,Paper,3.7,29,1,cellulose,Tuesday,1,14.2
+50,Clock Tower,Glass,5.4,3,1,silica,Tuesday,1,6.5
+51,Rajpur Road,Plastic,2.2,13,1,synthetic_polymer,Wednesday,2,8.1
+52,Rajpur Road,Organic,5.5,77,0,biodegradable,Wednesday,2,13.6
+53,Rajpur Road,Metal,3.3,5,1,ferrous,Wednesday,2,7.3
+54,Rajpur Road,Paper,1.8,20,1,cellulose,Wednesday,2,6.9
+55,Rajpur Road,Glass,4.4,2,1,silica,Wednesday,2,5.3
+56,ISBT,Plastic,3.2,14,1,synthetic_polymer,Wednesday,2,11.4
+57,ISBT,Organic,8.5,81,0,biodegradable,Wednesday,2,21.1
+58,ISBT,Metal,3.0,6,1,ferrous,Wednesday,2,6.6
+59,ISBT,Paper,2.6,24,1,cellulose,Wednesday,2,10.0
+60,ISBT,Glass,3.1,3,1,silica,Wednesday,2,3.7
+61,Clement Town,Plastic,1.7,11,1,synthetic_polymer,Wednesday,2,6.2
+62,Clement Town,Organic,4.0,74,0,biodegradable,Wednesday,2,9.9
+63,Clement Town,Metal,1.4,4,1,ferrous,Wednesday,2,3.1
+64,Clement Town,Paper,1.1,17,1,cellulose,Wednesday,2,4.2
+65,Clement Town,Glass,2.7,2,1,silica,Wednesday,2,3.3
+66,Prem Nagar,Plastic,2.0,12,1,synthetic_polymer,Wednesday,2,7.3
+67,Prem Nagar,Organic,6.2,79,0,biodegradable,Wednesday,2,15.4
+68,Prem Nagar,Metal,1.9,5,1,ferrous,Wednesday,2,4.2
+69,Prem Nagar,Paper,1.5,21,1,cellulose,Wednesday,2,5.8
+70,Prem Nagar,Glass,2.9,2,1,silica,Wednesday,2,3.5
+71,Clock Tower,Plastic,3.9,17,1,synthetic_polymer,Wednesday,2,14.3
+72,Clock Tower,Organic,9.8,84,0,biodegradable,Wednesday,2,24.3
+73,Clock Tower,Metal,3.6,7,1,ferrous,Wednesday,2,7.9
+74,Clock Tower,Paper,3.2,27,1,cellulose,Wednesday,2,12.3
+75,Clock Tower,Glass,4.9,3,1,silica,Wednesday,2,5.9
+76,Rajpur Road,Plastic,2.8,15,1,synthetic_polymer,Thursday,2,10.3
+77,Rajpur Road,Organic,6.4,80,0,biodegradable,Thursday,2,15.9
+78,Rajpur Road,Metal,2.8,5,1,ferrous,Thursday,2,6.2
+79,Rajpur Road,Paper,2.3,22,1,cellulose,Thursday,2,8.8
+80,Rajpur Road,Glass,3.8,2,1,silica,Thursday,2,4.6
+81,ISBT,Plastic,4.2,17,1,synthetic_polymer,Thursday,2,14.9
+82,ISBT,Organic,9.6,84,0,biodegradable,Thursday,2,23.8
+83,ISBT,Metal,2.3,6,1,ferrous,Thursday,2,5.1
+84,ISBT,Paper,3.2,27,1,cellulose,Thursday,2,12.3
+85,ISBT,Glass,3.7,3,1,silica,Thursday,2,4.4
+86,Clement Town,Plastic,2.1,13,1,synthetic_polymer,Thursday,2,7.7
+87,Clement Town,Organic,4.8,77,0,biodegradable,Thursday,2,11.9
+88,Clement Town,Metal,1.7,4,1,ferrous,Thursday,2,3.7
+89,Clement Town,Paper,1.4,20,1,cellulose,Thursday,2,5.4
+90,Clement Town,Glass,3.1,2,1,silica,Thursday,2,3.8
+91,Prem Nagar,Plastic,2.5,15,1,synthetic_polymer,Thursday,2,9.2
+92,Prem Nagar,Organic,7.2,82,0,biodegradable,Thursday,2,17.9
+93,Prem Nagar,Metal,2.4,5,1,ferrous,Thursday,2,5.3
+94,Prem Nagar,Paper,2.0,24,1,cellulose,Thursday,2,7.7
+95,Prem Nagar,Glass,3.4,2,1,silica,Thursday,2,4.1
+96,Clock Tower,Plastic,4.8,20,1,synthetic_polymer,Thursday,2,17.6
+97,Clock Tower,Organic,11.5,87,0,biodegradable,Thursday,2,28.5
+98,Clock Tower,Metal,4.3,8,1,ferrous,Thursday,2,9.5
+99,Clock Tower,Paper,4.0,30,1,cellulose,Thursday,2,15.4
+100,Clock Tower,Glass,5.8,3,1,silica,Thursday,2,7.0
+101,Rajpur Road,Plastic,2.4,14,1,synthetic_polymer,Friday,3,8.8
+102,Rajpur Road,Organic,5.9,78,0,biodegradable,Friday,3,14.6
+103,Rajpur Road,Metal,3.0,5,1,ferrous,Friday,3,6.6
+104,Rajpur Road,Paper,2.0,21,1,cellulose,Friday,3,7.7
+105,Rajpur Road,Glass,4.1,2,1,silica,Friday,3,5.0
+106,ISBT,Plastic,3.6,15,1,synthetic_polymer,Friday,3,12.8
+107,ISBT,Organic,8.7,82,0,biodegradable,Friday,3,21.6
+108,ISBT,Metal,2.6,6,1,ferrous,Friday,3,5.7
+109,ISBT,Paper,2.9,25,1,cellulose,Friday,3,11.1
+110,ISBT,Glass,3.4,3,1,silica,Friday,3,4.1
+111,Clement Town,Plastic,1.8,11,1,synthetic_polymer,Friday,3,6.6
+112,Clement Town,Organic,4.3,75,0,biodegradable,Friday,3,10.7
+113,Clement Town,Metal,1.5,4,1,ferrous,Friday,3,3.3
+114,Clement Town,Paper,1.2,18,1,cellulose,Friday,3,4.6
+115,Clement Town,Glass,2.8,2,1,silica,Friday,3,3.4
+116,Prem Nagar,Plastic,2.2,13,1,synthetic_polymer,Friday,3,8.1
+117,Prem Nagar,Organic,6.6,80,0,biodegradable,Friday,3,16.4
+118,Prem Nagar,Metal,2.1,5,1,ferrous,Friday,3,4.6
+119,Prem Nagar,Paper,1.7,22,1,cellulose,Friday,3,6.5
+120,Prem Nagar,Glass,3.1,2,1,silica,Friday,3,3.7
+121,Clock Tower,Plastic,4.3,18,1,synthetic_polymer,Friday,3,15.8
+122,Clock Tower,Organic,10.4,85,0,biodegradable,Friday,3,25.8
+123,Clock Tower,Metal,3.9,7,1,ferrous,Friday,3,8.6
+124,Clock Tower,Paper,3.5,28,1,cellulose,Friday,3,13.5
+125,Clock Tower,Glass,5.2,3,1,silica,Friday,3,6.3
+126,Rajpur Road,Plastic,3.1,16,1,synthetic_polymer,Saturday,3,11.4
+127,Rajpur Road,Organic,7.8,82,0,biodegradable,Saturday,3,19.3
+128,Rajpur Road,Metal,2.6,5,1,ferrous,Saturday,3,5.7
+129,Rajpur Road,Paper,2.7,23,1,cellulose,Saturday,3,10.4
+130,Rajpur Road,Glass,3.7,2,1,silica,Saturday,3,4.5
+131,ISBT,Plastic,5.0,19,1,synthetic_polymer,Saturday,3,17.8
+132,ISBT,Organic,12.1,87,0,biodegradable,Saturday,3,30.0
+133,ISBT,Metal,2.2,5,1,ferrous,Saturday,3,4.8
+134,ISBT,Paper,3.8,29,1,cellulose,Saturday,3,14.6
+135,ISBT,Glass,4.0,3,1,silica,Saturday,3,4.8
+136,Clement Town,Plastic,2.5,14,1,synthetic_polymer,Saturday,3,9.2
+137,Clement Town,Organic,5.9,79,0,biodegradable,Saturday,3,14.6
+138,Clement Town,Metal,1.9,4,1,ferrous,Saturday,3,4.2
+139,Clement Town,Paper,1.7,21,1,cellulose,Saturday,3,6.5
+140,Clement Town,Glass,3.3,2,1,silica,Saturday,3,4.0
+141,Prem Nagar,Plastic,2.8,15,1,synthetic_polymer,Saturday,3,10.3
+142,Prem Nagar,Organic,8.0,83,0,biodegradable,Saturday,3,19.9
+143,Prem Nagar,Metal,2.6,5,1,ferrous,Saturday,3,5.7
+144,Prem Nagar,Paper,2.2,25,1,cellulose,Saturday,3,8.5
+145,Prem Nagar,Glass,3.6,2,1,silica,Saturday,3,4.4
+146,Clock Tower,Plastic,5.5,22,1,synthetic_polymer,Saturday,3,20.2
+147,Clock Tower,Organic,13.2,89,0,biodegradable,Saturday,3,32.7
+148,Clock Tower,Metal,4.8,8,1,ferrous,Saturday,3,10.6
+149,Clock Tower,Paper,4.5,32,1,cellulose,Saturday,3,17.3
+150,Clock Tower,Glass,6.5,3,1,silica,Saturday,3,7.9
+151,Rajpur Road,Plastic,2.0,13,1,synthetic_polymer,Sunday,4,7.3
+152,Rajpur Road,Organic,5.2,76,0,biodegradable,Sunday,4,12.9
+153,Rajpur Road,Metal,3.2,5,1,ferrous,Sunday,4,7.0
+154,Rajpur Road,Paper,1.6,19,1,cellulose,Sunday,4,6.2
+155,Rajpur Road,Glass,4.5,2,1,silica,Sunday,4,5.4
+156,ISBT,Plastic,2.9,13,1,synthetic_polymer,Sunday,4,10.3
+157,ISBT,Organic,7.5,79,0,biodegradable,Sunday,4,18.6
+158,ISBT,Metal,3.2,6,1,ferrous,Sunday,4,7.0
+159,ISBT,Paper,2.2,23,1,cellulose,Sunday,4,8.5
+160,ISBT,Glass,2.8,2,1,silica,Sunday,4,3.4
+161,Clement Town,Plastic,1.5,10,1,synthetic_polymer,Sunday,4,5.5
+162,Clement Town,Organic,3.8,73,0,biodegradable,Sunday,4,9.4
+163,Clement Town,Metal,1.3,4,1,ferrous,Sunday,4,2.9
+164,Clement Town,Paper,1.0,17,1,cellulose,Sunday,4,3.8
+165,Clement Town,Glass,2.6,2,1,silica,Sunday,4,3.2
+166,Prem Nagar,Plastic,1.8,12,1,synthetic_polymer,Sunday,4,6.6
+167,Prem Nagar,Organic,5.8,78,0,biodegradable,Sunday,4,14.4
+168,Prem Nagar,Metal,1.8,5,1,ferrous,Sunday,4,4.0
+169,Prem Nagar,Paper,1.4,20,1,cellulose,Sunday,4,5.4
+170,Prem Nagar,Glass,2.8,2,1,silica,Sunday,4,3.4
+171,Clock Tower,Plastic,3.7,16,1,synthetic_polymer,Sunday,4,13.6
+172,Clock Tower,Organic,9.0,83,0,biodegradable,Sunday,4,22.3
+173,Clock Tower,Metal,3.4,7,1,ferrous,Sunday,4,7.5
+174,Clock Tower,Paper,3.0,26,1,cellulose,Sunday,4,11.5
+175,Clock Tower,Glass,4.7,3,1,silica,Sunday,4,5.7
+176,Rajpur Road,Plastic,2.6,14,1,synthetic_polymer,Monday,4,9.5
+177,Rajpur Road,Organic,6.2,79,0,biodegradable,Monday,4,15.4
+178,Rajpur Road,Metal,3.1,5,1,ferrous,Monday,4,6.8
+179,Rajpur Road,Paper,2.2,21,1,cellulose,Monday,4,8.5
+180,Rajpur Road,Glass,4.3,2,1,silica,Monday,4,5.2
+181,ISBT,Plastic,3.9,16,1,synthetic_polymer,Monday,4,13.9
+182,ISBT,Organic,9.4,83,0,biodegradable,Monday,4,23.3
+183,ISBT,Metal,2.8,6,1,ferrous,Monday,4,6.2
+184,ISBT,Paper,3.1,26,1,cellulose,Monday,4,11.9
+185,ISBT,Glass,3.6,3,1,silica,Monday,4,4.3
+186,Clement Town,Plastic,2.0,12,1,synthetic_polymer,Monday,4,7.3
+187,Clement Town,Organic,4.6,76,0,biodegradable,Monday,4,11.4
+188,Clement Town,Metal,1.6,4,1,ferrous,Monday,4,3.5
+189,Clement Town,Paper,1.3,19,1,cellulose,Monday,4,5.0
+190,Clement Town,Glass,2.9,2,1,silica,Monday,4,3.5
+191,Prem Nagar,Plastic,2.2,13,1,synthetic_polymer,Monday,4,8.1
+192,Prem Nagar,Organic,6.5,80,0,biodegradable,Monday,4,16.1
+193,Prem Nagar,Metal,2.0,5,1,ferrous,Monday,4,4.4
+194,Prem Nagar,Paper,1.6,22,1,cellulose,Monday,4,6.2
+195,Prem Nagar,Glass,3.0,2,1,silica,Monday,4,3.6
+196,Clock Tower,Plastic,4.2,18,1,synthetic_polymer,Monday,4,15.4
+197,Clock Tower,Organic,10.5,85,0,biodegradable,Monday,4,26.0
+198,Clock Tower,Metal,4.0,7,1,ferrous,Monday,4,8.8
+199,Clock Tower,Paper,3.6,28,1,cellulose,Monday,4,13.8
+200,Clock Tower,Glass,5.3,3,1,silica,Monday,4,6.4

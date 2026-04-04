@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Smart Waste Management System | Dehradun</title>
+  <meta name="description" content="AI-powered waste management system for Dehradun using machine learning to classify waste, predict generation, and optimize collection schedules." />
+  <meta name="keywords" content="waste management, Dehradun, AI, machine learning, smart city, recycling" />
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css" />
+  <!-- Leaflet Map CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+  <style>
+    /* Page-specific overrides */
+    .area-badge {
+      background: rgba(0, 212, 170, 0.1);
+      border: 1px solid rgba(0, 212, 170, 0.25);
+      color: var(--primary);
+      border-radius: 50px;
+      padding: 0.25rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    .recco-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+      text-align: center;
+      transition: var(--transition);
+    }
+    .recco-card:hover { transform: translateY(-4px); border-color: var(--border-hover); }
+    .recco-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+  </style>
+</head>
+
+<body>
+  <!-- ═══════════════════════════════
+       NAVBAR
+  ═══════════════════════════════ -->
+  <nav class="navbar navbar-expand-lg" id="mainNavbar">
+    <div class="container">
+      <a class="navbar-brand" href="/">
+        <div class="brand-icon">🌿</div>
+        <span>WasteAI <span style="color:var(--text-secondary);font-weight:400;font-size:0.85rem">Dehradun</span></span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
+        aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation"
+        style="border-color: var(--border); color: var(--text-primary);">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto align-items-center gap-1">
+          <li class="nav-item"><a class="nav-link active" href="/#home" id="nav-home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="/#features" id="nav-features">Features</a></li>
+          <li class="nav-item"><a class="nav-link" href="/#predictor" id="nav-predictor">AI Predictor</a></li>
+          <li class="nav-item"><a class="nav-link" href="/#report" id="nav-report">Report Waste</a></li>
+          <li class="nav-item"><a class="nav-link" href="/#map" id="nav-map">Map</a></li>
+          <li class="nav-item ms-2">
+            <a class="btn-primary-custom" href="/dashboard.html" id="btn-dashboard" style="font-size:0.9rem; padding:0.6rem 1.25rem;">
+              <i class="fa-solid fa-chart-line"></i> Dashboard
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════
+       HERO SECTION
+  ═══════════════════════════════ -->
+  <section class="hero" id="home">
+    <div class="container py-5">
+      <div class="row align-items-center g-5">
+        <!-- Left Content -->
+        <div class="col-lg-6 hero-content">
+          <div class="hero-badge">
+            <span class="pulse"></span>
+            AI-Powered Smart City Initiative
+          </div>
+          <h1>
+            Smart Waste<br />
+            Management for<br />
+            <span class="gradient-text">Dehradun City</span>
+          </h1>
+          <p class="lead">
+            Leveraging Machine Learning to classify waste types, predict daily waste generation,
+            and optimize collection routes across Dehradun's key areas in real-time.
+          </p>
+          <div class="hero-btns">
+            <a href="/dashboard.html" class="btn-primary-custom" id="btn-hero-dashboard">
+              <i class="fa-solid fa-chart-pie"></i> Live Dashboard
+            </a>
+            <a href="#predictor" class="btn-outline-custom" id="btn-hero-predictor">
+              <i class="fa-solid fa-robot"></i> Try AI Predictor
+            </a>
+          </div>
+
+          <!-- Quick Stats -->
+          <div class="row g-3 mt-4">
+            <div class="col-4">
+              <div style="text-align:center;">
+                <div style="font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;color:var(--primary);" id="stat-total-waste">--</div>
+                <div style="font-size:0.75rem;color:var(--text-secondary);font-weight:600;text-transform:uppercase;">Tonnes / Day</div>
+              </div>
+            </div>
+            <div class="col-4">
+              <div style="text-align:center;">
+                <div style="font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;color:#7c3aed;">5</div>
+                <div style="font-size:0.75rem;color:var(--text-secondary);font-weight:600;text-transform:uppercase;">Areas Covered</div>
+              </div>
+            </div>
+            <div class="col-4">
+              <div style="text-align:center;">
+                <div style="font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;color:#f59e0b;">95%</div>
+                <div style="font-size:0.75rem;color:var(--text-secondary);font-weight:600;text-transform:uppercase;">ML Accuracy</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Visual -->
+        <div class="col-lg-6 hero-visual">
+          <div class="row g-3">
+            <div class="col-6">
+              <div class="floating-card text-center">
+                <div style="font-size:2.5rem;margin-bottom:0.5rem;">📊</div>
+                <div style="font-size:0.85rem;font-weight:600;color:var(--primary);">Real-time Analytics</div>
+                <div style="font-size:0.75rem;color:var(--text-secondary);margin-top:0.25rem;">Live waste tracking</div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="floating-card text-center" style="animation-delay:0.5s;margin-top:2rem;">
+                <div style="font-size:2.5rem;margin-bottom:0.5rem;">🤖</div>
+                <div style="font-size:0.85rem;font-weight:600;color:#7c3aed;">ML Classification</div>
+                <div style="font-size:0.75rem;color:var(--text-secondary);margin-top:0.25rem;">5 waste categories</div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="floating-card text-center" style="animation-delay:1s;margin-top:-1rem;">
+                <div style="font-size:2.5rem;margin-bottom:0.5rem;">🗺️</div>
+                <div style="font-size:0.85rem;font-weight:600;color:#f59e0b;">Smart Routing</div>
+                <div style="font-size:0.75rem;color:var(--text-secondary);margin-top:0.25rem;">Optimized collection</div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="floating-card text-center" style="animation-delay:1.5s;">
+                <div style="font-size:2.5rem;margin-bottom:0.5rem;">♻️</div>
+                <div style="font-size:0.85rem;font-weight:600;color:#22c55e;">Eco-Friendly</div>
+                <div style="font-size:0.75rem;color:var(--text-secondary);margin-top:0.25rem;">Segregation advice</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ═══════════════════════════════
+       FEATURES SECTION
+  ═══════════════════════════════ -->
+  <section class="section" id="features">
+    <div class="container">
+      <div class="text-center mb-5">
+        <div class="section-badge mx-auto"><i class="fa-solid fa-star"></i> Key Features</div>
+        <h2 class="section-title">Powered by Modern AI & ML</h2>
+        <p class="section-subtitle mx-auto">
+          From waste classification to route optimization — our system covers the complete waste management lifecycle.
+        </p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+          <div class="glass-card h-100" id="feature-classification">
+            <div class="feature-icon" style="background:rgba(0,212,170,0.1);color:var(--primary);">🤖</div>
+            <h5 style="font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--text-primary);margin-bottom:0.75rem;">
+              Waste Classification
+            </h5>
+            <p style="color:var(--text-secondary);font-size:0.9rem;line-height:1.7;">
+              Random Forest classifier identifies waste as Plastic, Organic, Metal, Paper, or Glass from physical features. 95%+ accuracy.
+            </p>
+            <div class="mt-3 d-flex flex-wrap gap-2">
+              <span class="badge-custom badge-plastic">Plastic</span>
+              <span class="badge-custom badge-organic">Organic</span>
+              <span class="badge-custom badge-metal">Metal</span>
+              <span class="badge-custom badge-paper">Paper</span>
+              <span class="badge-custom badge-glass">Glass</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <div class="glass-card h-100" id="feature-prediction">
+            <div class="feature-icon" style="background:rgba(124,58,237,0.1);color:#7c3aed;">📈</div>
+            <h5 style="font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--text-primary);margin-bottom:0.75rem;">
+              7-Day Waste Forecast
+            </h5>
+            <p style="color:var(--text-secondary);font-size:0.9rem;line-height:1.7;">
+              Regression model predicts daily waste volume per area for the next 7 days, enabling proactive resource planning.
+            </p>
+            <div class="mt-3 d-flex flex-wrap gap-2">
+              <span class="area-badge">Rajpur Road</span>
+              <span class="area-badge">ISBT</span>
+              <span class="area-badge">Clock Tower</span>
+              <span class="area-badge">+2 more</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <div class="glass-card h-100" id="feature-routing">
+            <div class="feature-icon" style="background:rgba(245,158,11,0.1);color:#f59e0b;">🗺️</div>
+            <h5 style="font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--text-primary);margin-bottom:0.75rem;">
+              Collection Optimization
+            </h5>
+            <p style="color:var(--text-secondary);font-size:0.9rem;line-height:1.7;">
+              ML-driven schedule optimization suggests optimal pickup times and priorities based on predicted waste volumes.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <div class="glass-card h-100" id="feature-reporting">
+            <div class="feature-icon" style="background:rgba(59,130,246,0.1);color:#3b82f6;">📍</div>
+            <h5 style="font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--text-primary);margin-bottom:0.75rem;">
+              Citizen Reporting
+            </h5>
+            <p style="color:var(--text-secondary);font-size:0.9rem;line-height:1.7;">
+              Citizens can report illegal dumping or overflowing bins with location, image, and description — stored in SQLite.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <div class="glass-card h-100" id="feature-segregation">
+            <div class="feature-icon" style="background:rgba(34,197,94,0.1);color:#22c55e;">♻️</div>
+            <h5 style="font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--text-primary);margin-bottom:0.75rem;">
+              Segregation Advice
+            </h5>
+            <p style="color:var(--text-secondary);font-size:0.9rem;line-height:1.7;">
+              After classification, the system recommends Recycle, Compost, or Landfill actions with detailed handling tips.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <div class="glass-card h-100" id="feature-dashboard">
+            <div class="feature-icon" style="background:rgba(6,182,212,0.1);color:#06b6d4;">📊</div>
+            <h5 style="font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--text-primary);margin-bottom:0.75rem;">
+              Admin Dashboard
+            </h5>
+            <p style="color:var(--text-secondary);font-size:0.9rem;line-height:1.7;">
+              Full-featured admin panel with live KPI cards, Chart.js visualizations, and interactive Leaflet map of Dehradun.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ═══════════════════════════════
+       AI WASTE PREDICTOR
+  ═══════════════════════════════ -->
+  <section class="section" id="predictor">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-5">
+          <div class="section-badge"><i class="fa-solid fa-robot"></i> ML Model</div>
+          <h2 class="section-title">AI Waste Classifier</h2>
+          <p class="section-subtitle">
+            Enter the physical properties of your waste sample. Our Random Forest model will classify it and tell you how to dispose of it correctly.
+          </p>
+          <div class="mt-4 p-3 rounded" style="background:rgba(0,212,170,0.05);border:1px solid rgba(0,212,170,0.15);">
+            <div style="font-size:0.82rem;color:var(--text-secondary);line-height:1.8;">
+              <b style="color:var(--primary);">Algorithm:</b> Random Forest Classifier<br/>
+              <b style="color:var(--primary);">Features:</b> Weight, Moisture, Recyclability, Material<br/>
+              <b style="color:var(--primary);">Classes:</b> Plastic, Organic, Metal, Paper, Glass<br/>
+              <b style="color:var(--primary);">Accuracy:</b> 95%+ on test data
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-7">
+          <div class="predictor-card">
+            <div class="row g-4">
+              <!-- Form -->
+              <div class="col-md-6">
+                <h6 style="font-weight:700;color:var(--text-primary);margin-bottom:1.5rem;">
+                  <i class="fa-solid fa-sliders" style="color:var(--primary);margin-right:0.5rem;"></i>Input Features
+                </h6>
+
+                <div class="mb-3">
+                  <label class="form-label-custom" for="pred-weight">Weight (kg)</label>
+                  <input type="number" id="pred-weight" class="form-control-custom"
+                    placeholder="e.g. 2.5" min="0.1" max="50" step="0.1" value="2.5" />
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label-custom" for="pred-moisture">Moisture %</label>
+                  <input type="number" id="pred-moisture" class="form-control-custom"
+                    placeholder="e.g. 15" min="0" max="100" value="15" />
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label-custom" for="pred-material">Material Type</label>
+                  <select id="pred-material" class="form-control-custom">
+                    <option value="synthetic_polymer">Synthetic Polymer (Plastic)</option>
+                    <option value="biodegradable">Biodegradable (Organic)</option>
+                    <option value="ferrous">Ferrous (Metal)</option>
+                    <option value="cellulose">Cellulose (Paper)</option>
+                    <option value="silica">Silica (Glass)</option>
+                  </select>
+                </div>
+
+                <div class="mb-4">
+                  <label class="form-label-custom">Recyclable?</label>
+                  <div class="d-flex gap-3 mt-1">
+                    <label style="display:flex;align-items:center;gap:0.5rem;cursor:pointer;color:var(--text-secondary);">
+                      <input type="radio" name="pred-recyclable" id="pred-rec-yes" value="1" checked
+                        style="accent-color:var(--primary);width:16px;height:16px;" />
+                      <span>Yes</span>
+                    </label>
+                    <label style="display:flex;align-items:center;gap:0.5rem;cursor:pointer;color:var(--text-secondary);">
+                      <input type="radio" name="pred-recyclable" id="pred-rec-no" value="0"
+                        style="accent-color:var(--primary);width:16px;height:16px;" />
+                      <span>No</span>
+                    </label>
+                  </div>
+                </div>
+
+                <button class="btn-primary-custom w-100" id="btn-predict" onclick="predictWaste()">
+                  <i class="fa-solid fa-brain"></i> Classify Waste
+                </button>
+              </div>
+
+              <!-- Result Panel -->
+              <div class="col-md-6">
+                <h6 style="font-weight:700;color:var(--text-primary);margin-bottom:1.5rem;">
+                  <i class="fa-solid fa-chart-pie" style="color:var(--secondary);margin-right:0.5rem;"></i>Prediction Result
+                </h6>
+                <div class="waste-type-result" id="prediction-result">
+                  <div class="result-icon" style="color:var(--text-muted);">🔍</div>
+                  <div class="result-type" style="color:var(--text-muted);">Awaiting Input</div>
+                  <div class="result-confidence" style="margin-top:0.5rem;">
+                    Fill in the form and click "Classify Waste"
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ═══════════════════════════════
+       WASTE SEGREGATION GUIDE
+  ═══════════════════════════════ -->
+  <section class="section-sm" id="segregation">
+    <div class="container">
+      <div class="text-center mb-4">
+        <div class="section-badge mx-auto"><i class="fa-solid fa-recycle"></i> Segregation Guide</div>
+        <h2 class="section-title">How to Dispose Correctly</h2>
+      </div>
+
+      <div class="row g-3">
+        <div class="col-lg col-md-4 col-6">
+          <div class="recco-card">
+            <div class="recco-icon">🔵</div>
+            <div style="font-weight:700;color:var(--text-primary);margin-bottom:0.25rem;">Plastic</div>
+            <div style="font-size:0.78rem;color:var(--primary);font-weight:600;">♻️ Recycle</div>
+            <div style="font-size:0.75rem;color:var(--text-secondary);margin-top:0.5rem;">Blue bin. Clean before disposal.</div>
+          </div>
+        </div>
+        <div class="col-lg col-md-4 col-6">
+          <div class="recco-card">
+            <div class="recco-icon">🟢</div>
+            <div style="font-weight:700;color:var(--text-primary);margin-bottom:0.25rem;">Organic</div>
+            <div style="font-size:0.78rem;color:#22c55e;font-weight:600;">🌱 Compost</div>
+            <div style="font-size:0.75rem;color:var(--text-secondary);margin-top:0.5rem;">Green bin. Home composting ideal.</div>
+          </div>
+        </div>
+        <div class="col-lg col-md-4 col-6">
+          <div class="recco-card">
+            <div class="recco-icon">🟡</div>
+            <div style="font-weight:700;color:var(--text-primary);margin-bottom:0.25rem;">Metal</div>
+            <div style="font-size:0.78rem;color:#f59e0b;font-weight:600;">♻️ Recycle</div>
+            <div style="font-size:0.75rem;color:var(--text-secondary);margin-top:0.5rem;">Scrap dealer or yellow bin.</div>
+          </div>
+        </div>
+        <div class="col-lg col-md-4 col-6">
+          <div class="recco-card">
+            <div class="recco-icon">🟣</div>
+            <div style="font-weight:700;color:var(--text-primary);margin-bottom:0.25rem;">Paper</div>
+            <div style="font-size:0.78rem;color:#a78bfa;font-weight:600;">♻️ Recycle</div>
+            <div style="font-size:0.75rem;color:var(--text-secondary);margin-top:0.5rem;">Keep dry. Bundle for pickup.</div>
+          </div>
+        </div>
+        <div class="col-lg col-md-4 col-6">
+          <div class="recco-card">
+            <div class="recco-icon">🔷</div>
+            <div style="font-weight:700;color:var(--text-primary);margin-bottom:0.25rem;">Glass</div>
+            <div style="font-size:0.78rem;color:#22d3ee;font-weight:600;">♻️ Recycle</div>
+            <div style="font-size:0.75rem;color:var(--text-secondary);margin-top:0.5rem;">Handle with care. 100% recyclable.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ═══════════════════════════════
+       CITIZEN REPORT FORM
+  ═══════════════════════════════ -->
+  <section class="section" id="report">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="text-center mb-4">
+            <div class="section-badge mx-auto"><i class="fa-solid fa-flag"></i> Citizen Portal</div>
+            <h2 class="section-title">Report Garbage Issue</h2>
+            <p class="section-subtitle mx-auto">
+              Spotted illegal dumping or an overflowing bin? Report it here and our team will respond within 24 hours.
+            </p>
+          </div>
+
+          <div class="form-section" id="report-form-section">
+            <form id="report-form" onsubmit="submitReport(event)">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label-custom" for="rep-name">Your Name</label>
+                  <input type="text" id="rep-name" class="form-control-custom"
+                    placeholder="Rahul Sharma" required />
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label-custom" for="rep-location">Location</label>
+                  <input type="text" id="rep-location" class="form-control-custom"
+                    placeholder="e.g. Rajpur Road Near Petrol Pump" required />
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label-custom" for="rep-waste-type">Waste Type</label>
+                  <select id="rep-waste-type" class="form-control-custom">
+                    <option value="Plastic">Plastic</option>
+                    <option value="Organic">Organic</option>
+                    <option value="Metal">Metal</option>
+                    <option value="Paper">Paper</option>
+                    <option value="Glass">Glass</option>
+                    <option value="Mixed">Mixed / Unknown</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label-custom">Upload Image</label>
+                  <div class="file-upload-area" id="file-drop-zone" onclick="document.getElementById('rep-image').click()" role="button" tabindex="0">
+                    <i class="fa-solid fa-camera" style="font-size:1.5rem;color:var(--text-muted);margin-bottom:0.5rem;display:block;"></i>
+                    <div style="font-size:0.82rem;color:var(--text-secondary);" id="file-label">Click to upload photo (optional)</div>
+                    <input type="file" id="rep-image" accept="image/*" style="display:none;" onchange="handleFileSelect(this)" />
+                  </div>
+                </div>
+                <div class="col-12">
+                  <label class="form-label-custom" for="rep-description">Description</label>
+                  <textarea id="rep-description" class="form-control-custom" rows="4"
+                    placeholder="Describe the issue — location details, urgency, nearby landmarks..."></textarea>
+                </div>
+                <div class="col-12 text-center mt-2">
+                  <button type="submit" class="btn-primary-custom px-5" id="btn-submit-report">
+                    <i class="fa-solid fa-paper-plane"></i> Submit Report
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ═══════════════════════════════
+       MAP SECTION
+  ═══════════════════════════════ -->
+  <section class="section-sm" id="map">
+    <div class="container">
+      <div class="text-center mb-4">
+        <div class="section-badge mx-auto"><i class="fa-solid fa-map-marked-alt"></i> Waste Map</div>
+        <h2 class="section-title">Dehradun Waste Zones</h2>
+        <p class="section-subtitle mx-auto">
+          Interactive map showing waste collection points across Dehradun's major areas.
+        </p>
+      </div>
+      <div id="waste-map"></div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ═══════════════════════════════
+       FOOTER
+  ═══════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row g-4 mb-4">
+        <div class="col-lg-4">
+          <div class="footer-brand mb-2">🌿 WasteAI Dehradun</div>
+          <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.7;">
+            AI-powered smart waste management using Machine Learning, Flask, and Chart.js.
+            Built for Dehradun's clean future.
+          </p>
+        </div>
+        <div class="col-lg-2 offset-lg-2">
+          <div style="font-weight:700;color:var(--text-primary);margin-bottom:1rem;font-size:0.9rem;">System</div>
+          <ul style="list-style:none;padding:0;">
+            <li style="margin-bottom:0.5rem;"><a href="/dashboard.html" style="color:var(--text-secondary);text-decoration:none;font-size:0.85rem;">Dashboard</a></li>
+            <li style="margin-bottom:0.5rem;"><a href="#predictor" style="color:var(--text-secondary);text-decoration:none;font-size:0.85rem;">AI Predictor</a></li>
+            <li><a href="#report" style="color:var(--text-secondary);text-decoration:none;font-size:0.85rem;">Report Waste</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2">
+          <div style="font-weight:700;color:var(--text-primary);margin-bottom:1rem;font-size:0.9rem;">Tech Stack</div>
+          <ul style="list-style:none;padding:0;">
+            <li style="margin-bottom:0.5rem;font-size:0.85rem;color:var(--text-secondary);">Python Flask</li>
+            <li style="margin-bottom:0.5rem;font-size:0.85rem;color:var(--text-secondary);">Scikit-learn</li>
+            <li style="margin-bottom:0.5rem;font-size:0.85rem;color:var(--text-secondary);">SQLite</li>
+            <li style="font-size:0.85rem;color:var(--text-secondary);">Chart.js + Leaflet</li>
+          </ul>
+        </div>
+        <div class="col-lg-2">
+          <div style="font-weight:700;color:var(--text-primary);margin-bottom:1rem;font-size:0.9rem;">Areas</div>
+          <ul style="list-style:none;padding:0;">
+            <li style="margin-bottom:0.5rem;font-size:0.85rem;color:var(--text-secondary);">Rajpur Road</li>
+            <li style="margin-bottom:0.5rem;font-size:0.85rem;color:var(--text-secondary);">ISBT</li>
+            <li style="margin-bottom:0.5rem;font-size:0.85rem;color:var(--text-secondary);">Clock Tower</li>
+            <li style="margin-bottom:0.5rem;font-size:0.85rem;color:var(--text-secondary);">Clement Town</li>
+            <li style="font-size:0.85rem;color:var(--text-secondary);">Prem Nagar</li>
+          </ul>
+        </div>
+      </div>
+      <div class="divider" style="margin-bottom:1.5rem;"></div>
+      <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <div style="font-size:0.82rem;color:var(--text-muted);">
+          © 2024 WasteAI Dehradun · Built with ❤️ for Smart Cities
+        </div>
+        <div style="font-size:0.82rem;color:var(--text-muted);">
+          ML Model: Random Forest · Accuracy: 95%+
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Leaflet Map JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <!-- App JS -->
+  <script src="script.js"></script>
+</body>
+</html>
